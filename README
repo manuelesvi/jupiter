@@ -1,0 +1,6 @@
+Hello World C template with GNU Autotools.
+
+- Use autogen.sh to generate a configure script
+- Run ./configure
+- make
+- make install
