@@ -1,0 +1,4 @@
+Hello World in C
+
+This app demonstrates the use of GNU Autotools (autoconf, automake & libtool) to automate the build process using
+GNU autotools (https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html).
