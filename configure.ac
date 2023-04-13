@@ -3,7 +3,7 @@
 AC_PREREQ([2.71])
 AC_INIT([jupiter], [1.0])
 AC_CONFIG_SRCDIR([src/main.c])
-#AC_CONFIG_MACRO_DIRS([m4])
+AC_CONFIG_MACRO_DIRS([m4])
 
 # Initialize automake
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
@@ -22,6 +22,9 @@ AC_PROG_CC
 AC_PROG_CPP
 AC_PROG_CXX
 AC_PROG_RANLIB
+
+AC_PATH_PROG([DOTNETCORE],[dotnet])
+AX_PROG_DOTNETCORE_VERSION([7.0.202])
 
 # Checks for libraries.
 # AC_SEARCH_LIBS(graphviz, gv)
