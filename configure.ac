@@ -3,6 +3,7 @@
 
 AC_PREREQ([2.71])
 AC_INIT([jupiter], [1.0])
+AC_CONFIG_SRCDIR([src/main.c])
 AM_INIT_AUTOMAKE
 
 
