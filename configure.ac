@@ -1,13 +1,17 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
-
 AC_PREREQ([2.71])
 AC_INIT([jupiter], [1.0])
 AC_CONFIG_SRCDIR([src/main.c])
 AM_INIT_AUTOMAKE
 
+# Initialize automake
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
-AC_CONFIG_SRCDIR([config.h.in])
+# Specify config.h source
+# AC_CONFIG_SRCDIR([config.h.in])
+
+# Create config.h based on configure.ac macros
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
