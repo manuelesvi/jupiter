@@ -4,3 +4,5 @@ Hello World C template with GNU Autotools.
 - Run ./configure
 - make
 - make install
+
+Source code is in src/main.c
