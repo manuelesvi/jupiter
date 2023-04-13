@@ -1,6 +1,4 @@
-[![C/C++ CI](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml)
-
-[![C/C++ CI](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml/badge.svg?branch=main)](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml)
+main: [![C/C++ CI](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml/badge.svg?branch=main)](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml)
 
 ## About
 Hello World starter template that uses GNU Autotools (autoconf, automake, libtool).
