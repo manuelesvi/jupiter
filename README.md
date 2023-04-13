@@ -1,7 +1,12 @@
 [![C/C++ CI](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/manuelesvi/jupiter/actions/workflows/c-cpp.yml)
 
 ## About
-Hello World C template using GNU Autotools (autoconf, automake, libtool).
+Hello World starter template that uses GNU Autotools (autoconf, automake, libtool).
+
+## Where to start?
+- Review input sources: configure.ac, Makefile.am and src/Makefile.am
+- Use autoreconf to update configure script
+- Test the build
 
 ## How to Build
 - Use autogen.sh to generate a configure script
@@ -9,4 +14,5 @@ Hello World C template using GNU Autotools (autoconf, automake, libtool).
 - make
 - make install
 
-Source code is in src/main.c
+## Sources
+- Source code is in src/main.c
