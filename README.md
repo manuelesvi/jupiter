@@ -11,10 +11,10 @@ Hello World starter template that uses GNU Autotools (autoconf, automake, libtoo
 - Test the build
 
 ## How to Build
-- Use autogen.sh to generate a configure script
-- Run ./configure
-- make
-- make install
+1. Use autogen.sh to generate a configure script
+2. Run ./configure
+3. make
+4. make install
 
 ## Sources
 - Source code is in src/main.c
