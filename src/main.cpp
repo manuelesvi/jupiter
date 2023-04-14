@@ -12,38 +12,37 @@ using namespace std;
 
 extern "C" {
     // Some wrappers around existing cgraph functions to handle string marshaling
-    __declspec(dllexport) const char* rj_agmemwrite(Agraph_t * g);
-    __declspec(dllexport) Agraph_t* rj_agmemread(const char* s);
-    __declspec(dllexport) const char* rj_agget(void* obj, char* name);
-    __declspec(dllexport) const char* rj_agnameof(void* obj);
-    __declspec(dllexport) Agraph_t* rj_agopen(char* name, int graphtype);
-    __declspec(dllexport) const char *rj_sym_key(Agsym_t *sym);
+    const char* rj_agmemwrite(Agraph_t * g);
+    Agraph_t* rj_agmemread(const char* s);
+    const char* rj_agget(void* obj, char* name);
+    const char* rj_agnameof(void* obj);
+    Agraph_t* rj_agopen(char* name, int graphtype);
+    const char *rj_sym_key(Agsym_t *sym);
 
-    __declspec(dllexport) double node_x(Agnode_t* node);
-    __declspec(dllexport) double node_y(Agnode_t* node);
-    __declspec(dllexport) double node_width(Agnode_t* node);
-    __declspec(dllexport) double node_height(Agnode_t* node);
+    double node_x(Agnode_t* node);
+    double node_y(Agnode_t* node);
+    double node_width(Agnode_t* node);
+    double node_height(Agnode_t* node);
 
-    __declspec(dllexport) textlabel_t* node_label(Agnode_t* node);
-    __declspec(dllexport) textlabel_t* edge_label(Agedge_t* edge);
-    __declspec(dllexport) textlabel_t* graph_label(Agraph_t* graph);
+    textlabel_t* node_label(Agnode_t* node);
+    textlabel_t* edge_label(Agedge_t* edge);
+    textlabel_t* graph_label(Agraph_t* graph);
 
-    __declspec(dllexport) double label_x(textlabel_t* label);
-    __declspec(dllexport) double label_y(textlabel_t* label);
-    __declspec(dllexport) double label_width(textlabel_t* label);
-    __declspec(dllexport) double label_height(textlabel_t* label);
-    __declspec(dllexport) const char* label_text(textlabel_t* label);
-    __declspec(dllexport) double label_fontsize(textlabel_t* label);
-    __declspec(dllexport) const char* label_fontname(textlabel_t* label);
+    double label_x(textlabel_t* label);
+    double label_y(textlabel_t* label);
+    double label_width(textlabel_t* label);
+    double label_height(textlabel_t* label);
+    const char* label_text(textlabel_t* label);
+    double label_fontsize(textlabel_t* label);
+    const char* label_fontname(textlabel_t* label);
 
-    __declspec(dllexport) void clone_attribute_declarations(Agraph_t* from, Agraph_t* to);
-    __declspec(dllexport) void convert_to_undirected(Agraph_t *graph);
-
+    void clone_attribute_declarations(Agraph_t* from, Agraph_t* to);
+    void convert_to_undirected(Agraph_t *graph);
 
     // Test and debug functions
-    __declspec(dllexport) bool echobool(bool arg);
-    __declspec(dllexport) int echoint(int arg);
-    __declspec(dllexport) void rj_debug();
+    bool echobool(bool arg);
+    int echoint(int arg);
+    void rj_debug();
 }
 
 
