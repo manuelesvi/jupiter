@@ -6,8 +6,8 @@
 
 int main(int argc, char * argv[])
 {
-	
         printf("Hello from %s!\n", argv[0]);
+	
 	// set up a graphviz context
 	GVC_t *gvc = gvContext();
 
