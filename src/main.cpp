@@ -50,8 +50,8 @@ char* marshalCString(const char* s)
 {
     if (!s) return 0;
     int len = (int)strlen(s) + 1;
-    char* ptr = (char*) CoTaskMemAlloc(len);
-    strcpy_s(ptr, len, s);
+    char* ptr = (char*) malloc(len);
+    strcpy(ptr, s);
     return ptr;
 }
 
