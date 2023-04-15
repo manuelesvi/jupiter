@@ -11,9 +11,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 # Specify config.h source
 # AC_CONFIG_SRCDIR([config.h.in])
 
-LT_PREREQ([2.4.7])
-LT_INIT([dlopen])
-
 # Create config.h based on configure.ac macros
 AC_CONFIG_HEADERS([config.h])
 
@@ -21,10 +18,13 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CC
 AC_PROG_CPP
 AC_PROG_CXX
-AC_PROG_RANLIB
+AM_PROG_AR
 
 AC_PATH_PROG([DOTNETCORE],[dotnet])
 AX_PROG_DOTNETCORE_VERSION([7.0.202])
+
+LT_PREREQ([2.4.7])
+LT_INIT([dlopen])
 
 # Checks for libraries.
 AC_SEARCH_LIBS(gvContext, gvc)
