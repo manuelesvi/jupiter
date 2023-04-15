@@ -2,11 +2,9 @@
 #include <cgraph.h>
 #include <gvc.h>
 #include "types.h"
-// #include <objbase.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-// #include <conio.h>
 
 using namespace std;
 
@@ -107,12 +105,13 @@ Agraph_t* rj_agopen(char* name, int graphtype)
     if (graphtype == 0)
         return agopen(name, Agdirected, &memDisc);
     if (graphtype == 1)
-		return agopen(name, Agstrictdirected, &memDisc);
+	return agopen(name, Agstrictdirected, &memDisc);
     if (graphtype == 2)
-		return agopen(name, Agundirected, &memDisc);
+	return agopen(name, Agundirected, &memDisc);
     if (graphtype == 3)
-		return agopen(name, Agstrictundirected, &memDisc);
-	return 0;
+	return agopen(name, Agstrictundirected, &memDisc);
+	
+    return 0;
 }
 
 Agraph_t* rj_agmemread(const char* s)
