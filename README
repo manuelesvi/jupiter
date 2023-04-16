@@ -1,11 +1,11 @@
 Graphviz.LinuxWrapper implements same functionality than Rubjerg's GraphvizWrapper.
 
-Graphviz.NetWrapper is a VC++ project that handles string marshalling between .NET and Graphviz libary on Windows.
+GraphvizWrapper is a VC++ project that handles string marshalling between .NET and Graphviz libary on Windows.
 
 This project achieves same functionality but for Linux.
 
 To compile:
-1. Run ./configure
+1. Run ./configure [--prefix=/destdir]
 2. make
 3. make install
 
