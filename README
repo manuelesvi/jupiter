@@ -1,4 +1,14 @@
-Hello World in C
+Graphviz.LinuxWrapper implements same functionality than Rubjerg's GraphvizWrapper.
 
-This app demonstrates the use of GNU Autotools (autoconf, automake & libtool) to automate the build process using
-GNU autotools (https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html).
+Graphviz.NetWrapper is a VC++ project that handles string marshalling between .NET and Graphviz libary on Windows.
+
+This project achieves same functionality but for Linux.
+
+To compile:
+1. Run ./configure
+2. make
+3. make install
+
+A shared library will be created in your /usr/lib directory called libgraphviz.so which can then be referenced
+by AdvancedNutrition.Shared.Linux .NET project.
+
