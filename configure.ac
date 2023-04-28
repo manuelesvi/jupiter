@@ -8,9 +8,6 @@ AC_CONFIG_SRCDIR([src/main.c])
 # Initialize automake
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
-# Specify config.h source
-# AC_CONFIG_SRCDIR([config.h.in])
-
 LT_PREREQ([2.4])
 LT_INIT([dlopen])
 
@@ -24,7 +21,6 @@ AC_PROG_CXX
 AC_PROG_RANLIB
 
 # Checks for libraries.
-# AC_SEARCH_LIBS(graphviz, gv)
 
 # Checks for header files.
 
