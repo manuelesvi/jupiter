@@ -1,14 +1,16 @@
 Graphviz.LinuxWrapper implements same functionality than Rubjerg's GraphvizWrapper.
 
-GraphvizWrapper is a VC++ project that handles string marshalling between .NET and Graphviz libary on Windows.
+GraphvizWrapper is a VC++ project that handles string marshalling between .NET
+and Graphviz libary on Windows.
 
-This project achieves same functionality but for Linux.
+The project achieves same functionality but on Linux.
 
 To compile:
 1. Run ./configure [--prefix=/destdir]
 2. make
 3. make install
+______________________
 
-A shared library will be created in your /usr/lib directory called libgraphviz.so which can then be referenced
-by AdvancedNutrition.Shared.Linux .NET project.
-
+A shared library will be created in your /usr/lib directory
+called libgraphviz.so which can then be
+referenced by the .NET project using P/Invoke.
