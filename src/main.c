@@ -1,44 +1,110 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <gvc.h>
-#include <cgraph.h>
-#include <cdt.h>
+#define _CRT_SECURE_NO_DEPRECATE
+#include <objbase.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include "GraphvizWrapper.h"
 
-int 
-main(int argc, char * argv[])
+using namespace std;
+
+// Relevant Graphviz Documentation: https://graphviz.org/docs/library/
+
+void free_str(char* str) {
+    free(str);
+}
+
+Agraph_t* rj_agopen(char* name, int graphtype)
 {
-        printf("Hello from %s!\n", argv[0]);
-	
-	// set up a graphviz context
-	GVC_t *gvc = gvContext();
+    if (graphtype == 0)
+        return agopen(name, Agdirected, &memDisc);
+    if (graphtype == 1)
+        return agopen(name, Agstrictdirected, &memDisc);
+    if (graphtype == 2)
+        return agopen(name, Agundirected, &memDisc);
+    if (graphtype == 3)
+        return agopen(name, Agstrictundirected, &memDisc);
+    return 0;
+}
 
-	// parse command line args - minimally argv[0] sets layout engine
-	// gvParseArgs(gvc, argc, argv);
+Agraph_t* rj_agmemread(const char* s)
+{
+    stringstream stream;
+    stream << s;
+    Agraph_t* g = agread(&stream, &memDisc);
+    return g;
+}
 
-	// Create a directed graph with 2 nodes (n, m)	
-	Agraph_t *g = agopen("g", Agdirected, 0);
-	Agnode_t *n = agnode(g, "n", 1);
-	Agnode_t *m = agnode(g, "m", 1);
-	// connected with an edge.
-	agedge(g, n, m, 0, 1);
+// Note: for this function to work, the graph has to be created with the memDisc, e.g. using rj_agopen
+// This function transfers ownership of the string result.
+// The caller has to call free_str to free it.
+const char* rj_agmemwrite(Agraph_t* g)
+{
+    ostringstream os;
+    agwrite(g, &os);
+    // Note that os and os.str() will go out of scope when this function returns.
+    // Therefore we need to strdup the underlying c string
+    return _strdup(os.str().c_str());
+}
 
-	// Compute a layout using layout engine from command line args
-	// gvLayoutJobs(gvc, g);
-	
-	gvLayout(gvc, g, "dot");
-		
-	FILE *file = fopen("test.png", "w");
-	// Write the graph according to -T and -o options
-	gvRender(gvc, g, "png", file);
-	fflush(file);
-	fclose(file);
 
-	// Free layout data
-	gvFreeLayout(gvc, g);
+// Expose removed cgraph functions https://gitlab.com/graphviz/graphviz/-/issues/2433
+// When new GraphViz is released these are re-exposed and our wrappers can be removed
+Agnode_t* rj_aghead(Agedge_t* edge)
+{
+    return AGHEAD(edge);
+}
+Agnode_t* rj_agtail(Agedge_t* edge)
+{
+    return AGTAIL(edge);
+}
+int rj_ageqedge(Agedge_t* e, Agedge_t* f)
+{
+    return AGEQEDGE(e, f);
+}
+Agedge_t* rj_agmkin(Agedge_t* e)
+{
+    return AGMKIN(e);
+}
+Agedge_t* rj_agmkout(Agedge_t* e)
+{
+    return AGMKOUT(e);
+}
 
-	// Free graph structures
-	agclose(g);
+textlabel_t* node_label(Agnode_t* node) { return ND_label(node); }
+textlabel_t* edge_label(Agedge_t* edge) { return ED_label(edge); }
+textlabel_t* graph_label(Agraph_t* graph) { return GD_label(graph); }
 
-	// close output file, free context, and return number of errors
-	return gvFreeContext(gvc);
+// Center coords of the label
+double label_x(textlabel_t* label) { return label->pos.x; } // in points
+double label_y(textlabel_t* label) { return label->pos.y; } // in points
+double label_width(textlabel_t* label) { return label->dimen.x; } // in points
+double label_height(textlabel_t* label) { return label->dimen.y; } // in points
+const char* label_text(textlabel_t* label) { return label->text; }
+double label_fontsize(textlabel_t* label) { return label->fontsize; } // in points
+const char* label_fontname(textlabel_t* label) { return label->fontname; }
+
+// Center coords of the node
+double node_x(Agnode_t* node) { return ND_coord(node).x; } // in points
+double node_y(Agnode_t* node) { return ND_coord(node).y; } // in points
+double node_width(Agnode_t* node) { return ND_width(node); } // in inches
+double node_height(Agnode_t* node) { return ND_height(node); } // in inches
+
+const char* rj_sym_key(Agsym_t* sym) { return sym->name; }
+
+void clone_attribute_declarations(Agraph_t* from, Agraph_t* to)
+{
+    for (int kind = 0; kind < 3; kind++)
+    {
+        Agsym_t* current = agnxtattr(from, kind, nullptr);
+        while (current)
+        {
+            agattr(to, kind, current->name, current->defval);
+            current = agnxtattr(from, kind, current);
+        }
+    }
+}
+
+void convert_to_undirected(Agraph_t* graph)
+{
+    graph->desc.directed = 0;
 }
