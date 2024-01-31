@@ -1,12 +1,11 @@
 #pragma once
 
 #define _CRT_SECURE_NO_DEPRECATE
-#include <objbase.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
-#define GVDLL 1
+/* #define __cplusplus 1 */
 
 #include "cgraph.h"
 #include "gvc.h"
